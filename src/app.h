@@ -18,7 +18,7 @@ class App {
   Pipeline pipeline{device,
                     "src/shaders/simple_shader.vert.spv",
                     "src/shaders/simple_shader.frag.spv",
-                    Pipeline::makeDefaultPipelineConfig(WIDTH, HEIGHT)};
+                    Pipeline::makeDefaultPipelineConfigInfo(WIDTH, HEIGHT)};
 };
 
 }  // namespace lve
