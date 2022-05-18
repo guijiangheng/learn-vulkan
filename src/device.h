@@ -58,17 +58,23 @@ class Device {
                                VkFormatFeatureFlags features);
 
   // Buffer Helper Functions
-  void createBuffer(VkDeviceSize size, VkBufferUsageFlags usage,
-                    VkMemoryPropertyFlags properties, VkBuffer &buffer,
+  void createBuffer(VkDeviceSize size,
+                    VkBufferUsageFlags usage,
+                    VkMemoryPropertyFlags properties,
+                    VkBuffer &buffer,
                     VkDeviceMemory &bufferMemory);
   VkCommandBuffer beginSingleTimeCommands();
   void endSingleTimeCommands(VkCommandBuffer commandBuffer);
   void copyBuffer(VkBuffer srcBuffer, VkBuffer dstBuffer, VkDeviceSize size);
-  void copyBufferToImage(VkBuffer buffer, VkImage image, uint32_t width,
-                         uint32_t height, uint32_t layerCount);
+  void copyBufferToImage(VkBuffer buffer,
+                         VkImage image,
+                         uint32_t width,
+                         uint32_t height,
+                         uint32_t layerCount);
 
   void createImageWithInfo(const VkImageCreateInfo &imageInfo,
-                           VkMemoryPropertyFlags properties, VkImage &image,
+                           VkMemoryPropertyFlags properties,
+                           VkImage &image,
                            VkDeviceMemory &imageMemory);
 
   VkPhysicalDeviceProperties properties;
