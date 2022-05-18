@@ -16,6 +16,7 @@ class Window {
   Window& operator=(const Window&) = delete;
 
   bool shouldClose() const;
+  void createWindowSurface(VkInstance instance, VkSurfaceKHR* surface);
 
  private:
   void initWindow();
