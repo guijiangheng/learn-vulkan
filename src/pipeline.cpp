@@ -20,6 +20,11 @@ Pipeline::~Pipeline() {
   vkDestroyPipeline(device.device(), graphicsPipeline, nullptr);
 }
 
+void Pipeline::bind(VkCommandBuffer commandBuffer) {
+  vkCmdBindPipeline(
+      commandBuffer, VK_PIPELINE_BIND_POINT_GRAPHICS, graphicsPipeline);
+}
+
 void Pipeline::createGraphicsPipeline(std::string vertFilepath,
                                       std::string fragFilepath,
                                       const PipelineConfigInfo& config) {

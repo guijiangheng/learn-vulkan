@@ -33,6 +33,8 @@ class Pipeline {
   Pipeline(const Pipeline&) = delete;
   Pipeline& operator=(const Pipeline&) = delete;
 
+  void bind(VkCommandBuffer commandBuffer);
+
   static PipelineConfigInfo makeDefaultPipelineConfigInfo(uint32_t width,
                                                           uint32_t height);
 
