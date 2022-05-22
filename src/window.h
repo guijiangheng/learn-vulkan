@@ -17,6 +17,10 @@ class Window {
 
   bool shouldClose() const;
 
+  bool isWindowResized() { return framebufferResized; }
+
+  void resetWindowResizedFlag() { framebufferResized = false; }
+
   VkExtent2D getExtent() {
     return {static_cast<uint32_t>(width), static_cast<uint32_t>(height)};
   }
@@ -26,8 +30,14 @@ class Window {
  private:
   void initWindow();
 
+  static void framerBufferResizeCallback(GLFWwindow* window,
+                                         int width,
+                                         int height);
+
   int width;
   int height;
+  bool framebufferResized = false;
+
   std::string title;
   GLFWwindow* window;
 };
