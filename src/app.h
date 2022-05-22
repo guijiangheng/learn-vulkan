@@ -3,6 +3,7 @@
 #include <memory>
 #include <vector>
 
+#include "model.h"
 #include "pipeline.h"
 #include "swapchain.h"
 #include "window.h"
@@ -23,6 +24,7 @@ class App {
   void run();
 
  private:
+  void loadModels();
   void createPipelineLayout();
   void createPipeline();
   void createCommandBuffers();
@@ -34,6 +36,7 @@ class App {
   std::unique_ptr<Pipeline> pipeline;
   VkPipelineLayout pipelineLayout;
   std::vector<VkCommandBuffer> commandBuffers;
+  std::unique_ptr<Model> model;
 };
 
 }  // namespace lve

@@ -4,6 +4,8 @@
 #include <iostream>
 #include <stdexcept>
 
+#include "model.h"
+
 namespace lve {
 
 Pipeline::Pipeline(Device& device,
@@ -50,13 +52,17 @@ void Pipeline::createGraphicsPipeline(std::string vertFilepath,
   shaderStages[1].pNext = nullptr;
   shaderStages[1].pSpecializationInfo = nullptr;
 
+  auto bindDescriptions = Model::Vertex::getBindingDescriptions();
+  auto attributeDescriptions = Model::Vertex::getAttributeDescriptions();
   VkPipelineVertexInputStateCreateInfo vertexInputInfo{};
   vertexInputInfo.sType =
       VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_STATE_CREATE_INFO;
-  vertexInputInfo.vertexBindingDescriptionCount = 0;
-  vertexInputInfo.pVertexBindingDescriptions = nullptr;
-  vertexInputInfo.vertexAttributeDescriptionCount = 0;
-  vertexInputInfo.pVertexAttributeDescriptions = nullptr;
+  vertexInputInfo.vertexBindingDescriptionCount =
+      static_cast<uint32_t>(bindDescriptions.size());
+  vertexInputInfo.pVertexBindingDescriptions = bindDescriptions.data();
+  vertexInputInfo.vertexAttributeDescriptionCount =
+      static_cast<uint32_t>(attributeDescriptions.size());
+  vertexInputInfo.pVertexAttributeDescriptions = attributeDescriptions.data();
 
   VkPipelineViewportStateCreateInfo viewportInfo{};
   viewportInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_STATE_CREATE_INFO;
